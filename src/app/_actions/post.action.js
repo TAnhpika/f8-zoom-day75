@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export const createPost = async (prevState, formData) => {
     const title = formData.get("title");
@@ -28,7 +28,11 @@ export const createPost = async (prevState, formData) => {
         };
     }
 
-    revalidatePath("/posts");
+    // revalidatePath("/posts");
+    // revalidateTag("posts:list", {
+    //     expire: 0 // clear ngay lập tức
+    // })
+    revalidateTag("posts:list", "max")
 
     return {
         message: "Create post success",

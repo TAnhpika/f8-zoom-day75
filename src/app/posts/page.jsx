@@ -1,4 +1,3 @@
-// import { revalidatePath } from "next/cache";
 
 import AddForm from "./AddForm";
 
@@ -7,6 +6,9 @@ const getPosts = async () => {
         `${process.env.NEXT_PUBLIC_SERVER_API}/posts`,
         {
             cache: "force-cache",
+            next: {
+                tags: ["posts:list"]
+            }
         },
     );
     if (!response.ok) {
@@ -16,7 +18,6 @@ const getPosts = async () => {
 };
 
 export default async function PostsPage() {
-    // revalidatePath("/posts")
     const posts = await getPosts();
 
     return (

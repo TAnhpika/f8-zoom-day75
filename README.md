@@ -13,6 +13,8 @@ DELETE
 
 fetch cache: lưu dữ liệu vào bộ nhớ đệm -> check & lấy trong bộ nhớ đệm trc (khi nào dữ liệu đó k còn / hết hạn mới gọi đến BE để trả về dữ liệu mới)
 
+- bỏ disable cache ở dev network
+
 2 cơ chế hay dùng vs cache:
 
 - revalidate (set up 1 thời gian, hết tg thì tự làm mới dữ liệu - khi đó nếu có request thì gọi api BE)
@@ -39,9 +41,21 @@ fetch cache: lưu dữ liệu vào bộ nhớ đệm -> check & lấy trong bộ
 
 ### 2 trường hợp xử lý form
 
-- 1. Nếu xử lý trong nội bộ thì dùng luôn Server Action cho nhanh - bản chất nó chỉ là 1 cái hàm thôi (Cách xử lý full ở Server Action)
+-   1. Nếu xử lý trong nội bộ thì dùng luôn Server Action cho nhanh - bản chất nó chỉ là 1 cái hàm thôi (Cách xử lý full ở Server Action)
 
-- 2. Nếu muốn xử lý ở client r gọi API tới BE:
+-   2. Nếu muốn xử lý ở client r gọi API tới BE:
     - Server action chỉ cần gọi đúng 1 hàm revalidate để tiến hành clear cache
     - React hook form + Zod -> call API (Full ở Client)
     - !Nên dùng khi validate (vì validate ở Server Action là gọi lên Server của Next -> chậm)
+
+## RevalidateTag
+
+- Nếu làm việc với Tag thì gắn tag ở page dùng cache:
+    - cache: "force-cache",
+      next: {
+      tags: ["posts:list"]
+      }
+
+    - revalidateTag("posts:list", "max"):
+        - max: revalidate ở dưới nền - 1,2 request sau mới xử lý xong thì dữ liệu mới đc làm mới ~ queue -> giảm tải cho Next Server (Được Next khuyến cáo nên dùng).
+        - { expire: 0 } // clear cache ngay lập tức
