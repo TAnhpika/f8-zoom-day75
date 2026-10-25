@@ -70,3 +70,20 @@ fetch cache: lưu dữ liệu vào bộ nhớ đệm -> check & lấy trong bộ
 - tạo modal -> gọi api hiện chi tiết -> edit -> viết server action để update
 - thêm input ẩn chứa id
 - dùng PATCH để k ghi đè các trường khác
+
+## "use cache"
+
+- dành cho ai muốn làm BE ở Next
+- thêm "use cache" vào scope nào thì cache scope đó: file, component, hàm...
+
+- thêm cacheComponents: true, vào config
+- process.cwd(): get current directory
+
+### cache trong React
+
+- chỉ hoạt động ở server
+- lưu ở RAM để tránh trùng fetch api
+- ~ TanStack (theo key) vs cache(function)
+
+- luồng: proxy -> layout -> page
+- gọi 1 api ở proxy, 1 api ở page, 2 api đó trùng nhau thì gọi 2 lần? -> dùng react.cache xử lý (sang auth sẽ nói tiếp)
