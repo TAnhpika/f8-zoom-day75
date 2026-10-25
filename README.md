@@ -1,37 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+READ (Cache):
 
-## Getting Started
+- List
+- Detail
 
-First, run the development server:
+CREATE
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+UPDATE
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+DELETE
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Cache
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+fetch cache: lưu dữ liệu vào bộ nhớ đệm -> check & lấy trong bộ nhớ đệm trc (khi nào dữ liệu đó k còn / hết hạn mới gọi đến BE để trả về dữ liệu mới)
 
-## Learn More
+2 cơ chế hay dùng vs cache:
 
-To learn more about Next.js, take a look at the following resources:
+- revalidate (set up 1 thời gian, hết tg thì tự làm mới dữ liệu - khi đó nếu có request thì gọi api BE)
+- chủ động xóa - tg lưu trữ vĩnh viễn
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Xóa cache
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- revalidatePath(duong-dan): xóa full cache trong duong-dan (nhược: nếu 10 fetch 1 path thì xóa cả 10 - phí --> dùng Tag - cấu hình cẩn thận, dễ loạn tag -> xóa nhầm --> thêm file important để định nghĩa cấu hình tập trung)
+- revalidateTag(tag): xóa theo index đc gắn vào cache
 
-## Deploy on Vercel
+--> Chỉ sử dụng ở trên server action, route handler
+(trang admin dùng react, trang user dùng next có cache fetch. Khi trang react muốn cập nhập dữ liệu vào BE thì phải gọi đến API Next để xóa cache --> Next cần viết 1 route handler để trang react gọi sang khi muốn cập nhập)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# f8-zoom-day75
+#### Nhược điểm
+- nếu tách route handler riêng chỉ phù hợp trong trường hợp tách dự án (tách dashboard quản lý riêng, end user riêng)
+- nếu xử dụng nội bộ (api ở trên, bên dưới có thêm 1 form. nếu gọi 1 API nữa thì rắc rối) --> Sử dụng server action (nhược điểm của server action là k dùng ra bên ngoài đc, chỉ dùng nội bộ bên trong thoi) - nhanh hơn

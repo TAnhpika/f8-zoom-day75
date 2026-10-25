@@ -1,0 +1,135 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Post 1",
+      "userId": 16,
+      "status": true,
+      "createdAt": "2026-03-28T09:12:00.000Z",
+      "updatedAt": "2026-03-28T09:12:00.000Z",
+      "user": {
+        "id": 16,
+        "email": "admin@gmail.com",
+        "name": "Admin System",
+        "status": true,
+        "password": "$2b$10$m1MVSszL/N9WSvUKVdBKIuZ0fFYNBsE3XCEwmfPBzXTxNYzNWDfRy",
+        "createdAt": "2026-03-27T07:00:00.000Z",
+        "updatedAt": "2026-03-27T07:00:00.000Z"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Post 2",
+      "userId": 16,
+      "status": true,
+      "createdAt": "2026-03-29T10:30:15.000Z",
+      "updatedAt": "2026-03-29T10:30:15.000Z",
+      "user": {
+        "id": 16,
+        "email": "admin@gmail.com",
+        "name": "Admin System",
+        "status": true,
+        "password": "$2b$10$m1MVSszL/N9WSvUKVdBKIuZ0fFYNBsE3XCEwmfPBzXTxNYzNWDfRy",
+        "createdAt": "2026-03-27T07:00:00.000Z",
+        "updatedAt": "2026-03-27T07:00:00.000Z"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Post 3",
+      "userId": 17,
+      "status": false,
+      "createdAt": "2026-03-31T14:20:45.000Z",
+      "updatedAt": "2026-03-31T14:20:45.000Z",
+      "user": {
+        "id": 17,
+        "email": "anhpika.web@gmail.com",
+        "name": "Anhpika",
+        "status": true,
+        "password": "$2b$10$m1MVSszL/N9WSvUKVdBKIuZ0fFYNBsE3XCEwmfPBzXTxNYzNWDfRy",
+        "createdAt": "2026-03-28T07:54:45.000Z",
+        "updatedAt": "2026-03-28T07:54:45.000Z"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Post 1",
+      "userId": 17,
+      "status": true,
+      "createdAt": "2026-04-01T08:55:07.000Z",
+      "updatedAt": "2026-04-01T08:55:07.000Z",
+      "user": {
+        "id": 17,
+        "email": "anhpika.web@gmail.com",
+        "name": "Anhpika",
+        "status": true,
+        "password": "$2b$10$m1MVSszL/N9WSvUKVdBKIuZ0fFYNBsE3XCEwmfPBzXTxNYzNWDfRy",
+        "createdAt": "2026-03-28T07:54:45.000Z",
+        "updatedAt": "2026-03-28T07:54:45.000Z"
+      }
+    },
+    {
+      "id": 5,
+      "title": "Post 1",
+      "userId": 18,
+      "status": true,
+      "createdAt": "2026-04-01T08:55:51.000Z",
+      "updatedAt": "2026-04-01T08:55:51.000Z",
+      "user": {
+        "id": 18,
+        "email": "user18@gmail.com",
+        "name": "Nguyen Van A",
+        "status": true,
+        "password": "$2b$10$m1MVSszL/N9WSvUKVdBKIuZ0fFYNBsE3XCEwmfPBzXTxNYzNWDfRy",
+        "createdAt": "2026-03-29T08:00:00.000Z",
+        "updatedAt": "2026-03-29T08:00:00.000Z"
+      }
+    },
+    {
+      "id": 6,
+      "title": "Hello anh em 6",
+      "userId": 18,
+      "status": true,
+      "createdAt": "2026-04-16T13:39:22.000Z",
+      "updatedAt": "2026-04-16T13:39:22.000Z",
+      "user": {
+        "id": 18,
+        "email": "user18@gmail.com",
+        "name": "Nguyen Van A",
+        "status": true,
+        "password": "$2b$10$m1MVSszL/N9WSvUKVdBKIuZ0fFYNBsE3XCEwmfPBzXTxNYzNWDfRy",
+        "createdAt": "2026-03-29T08:00:00.000Z",
+        "updatedAt": "2026-03-29T08:00:00.000Z"
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": 16,
+      "email": "admin@gmail.com",
+      "name": "Admin System",
+      "status": true,
+      "password": "$2b$10$m1MVSszL/N9WSvUKVdBKIuZ0fFYNBsE3XCEwmfPBzXTxNYzNWDfRy",
+      "createdAt": "2026-03-27T07:00:00.000Z",
+      "updatedAt": "2026-03-27T07:00:00.000Z"
+    },
+    {
+      "id": 17,
+      "email": "anhpika.web@gmail.com",
+      "name": "Anhpika",
+      "status": true,
+      "password": "$2b$10$m1MVSszL/N9WSvUKVdBKIuZ0fFYNBsE3XCEwmfPBzXTxNYzNWDfRy",
+      "createdAt": "2026-03-28T07:54:45.000Z",
+      "updatedAt": "2026-03-28T07:54:45.000Z"
+    },
+    {
+      "id": 18,
+      "email": "user18@gmail.com",
+      "name": "Nguyen Van A",
+      "status": true,
+      "password": "$2b$10$m1MVSszL/N9WSvUKVdBKIuZ0fFYNBsE3XCEwmfPBzXTxNYzNWDfRy",
+      "createdAt": "2026-03-29T08:00:00.000Z",
+      "updatedAt": "2026-03-29T08:00:00.000Z"
+    }
+  ]
+}
