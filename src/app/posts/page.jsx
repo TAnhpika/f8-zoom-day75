@@ -1,9 +1,14 @@
 // import { revalidatePath } from "next/cache";
 
+import AddForm from "./AddForm";
+
 const getPosts = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_API}/posts`, {
-        cache: "force-cache"
-    });
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_API}/posts`,
+        {
+            cache: "force-cache",
+        },
+    );
     if (!response.ok) {
         throw new Error("Có lỗi khi lấy danh sách posts");
     }
@@ -30,6 +35,7 @@ export default async function PostsPage() {
                     </div>
                 </div>
             ))}
+            <AddForm />
         </div>
     );
 }

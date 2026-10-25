@@ -1,7 +1,7 @@
 {
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Post 1",
       "userId": 16,
       "status": true,
@@ -18,7 +18,7 @@
       }
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Post 2",
       "userId": 16,
       "status": true,
@@ -35,7 +35,7 @@
       }
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Post 3",
       "userId": 17,
       "status": false,
@@ -52,7 +52,7 @@
       }
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Post 1",
       "userId": 17,
       "status": true,
@@ -69,7 +69,7 @@
       }
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Post 1",
       "userId": 18,
       "status": true,
@@ -86,7 +86,7 @@
       }
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Hello anh em 6",
       "userId": 18,
       "status": true,
@@ -101,11 +101,27 @@
         "createdAt": "2026-03-29T08:00:00.000Z",
         "updatedAt": "2026-03-29T08:00:00.000Z"
       }
+    },
+    {
+      "title": "Test",
+      "id": "LtLLkb6025k"
+    },
+    {
+      "title": "Anhpika",
+      "id": "_pHr1zS6ppQ"
+    },
+    {
+      "title": "ABC",
+      "id": "b1XIq9YD8h0"
+    },
+    {
+      "title": "Anhpika",
+      "id": "sWnYWrr4I90"
     }
   ],
   "users": [
     {
-      "id": 16,
+      "id": "16",
       "email": "admin@gmail.com",
       "name": "Admin System",
       "status": true,
@@ -114,7 +130,7 @@
       "updatedAt": "2026-03-27T07:00:00.000Z"
     },
     {
-      "id": 17,
+      "id": "17",
       "email": "anhpika.web@gmail.com",
       "name": "Anhpika",
       "status": true,
@@ -123,7 +139,7 @@
       "updatedAt": "2026-03-28T07:54:45.000Z"
     },
     {
-      "id": 18,
+      "id": "18",
       "email": "user18@gmail.com",
       "name": "Nguyen Van A",
       "status": true,
@@ -131,5 +147,6 @@
       "createdAt": "2026-03-29T08:00:00.000Z",
       "updatedAt": "2026-03-29T08:00:00.000Z"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

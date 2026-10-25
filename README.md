@@ -27,5 +27,21 @@ fetch cache: lưu dữ liệu vào bộ nhớ đệm -> check & lấy trong bộ
 (trang admin dùng react, trang user dùng next có cache fetch. Khi trang react muốn cập nhập dữ liệu vào BE thì phải gọi đến API Next để xóa cache --> Next cần viết 1 route handler để trang react gọi sang khi muốn cập nhập)
 
 #### Nhược điểm
+
 - nếu tách route handler riêng chỉ phù hợp trong trường hợp tách dự án (tách dashboard quản lý riêng, end user riêng)
 - nếu xử dụng nội bộ (api ở trên, bên dưới có thêm 1 form. nếu gọi 1 API nữa thì rắc rối) --> Sử dụng server action (nhược điểm của server action là k dùng ra bên ngoài đc, chỉ dùng nội bộ bên trong thoi) - nhanh hơn
+
+## Revalidate bằng Server action
+
+- dùng client component thì server action phải tách riêng
+- Sau khi thêm vào db ok nhưng k hiện ở FE -> Phải revalidate cache sau khi thêm xong
+- Bình thường: revalidate -> refresh nhưng server action tự động clear cache round -> hiện dữ liệu mới luôn - k cần refresh
+
+### 2 trường hợp xử lý form
+
+- 1. Nếu xử lý trong nội bộ thì dùng luôn Server Action cho nhanh - bản chất nó chỉ là 1 cái hàm thôi (Cách xử lý full ở Server Action)
+
+- 2. Nếu muốn xử lý ở client r gọi API tới BE:
+    - Server action chỉ cần gọi đúng 1 hàm revalidate để tiến hành clear cache
+    - React hook form + Zod -> call API (Full ở Client)
+    - !Nên dùng khi validate (vì validate ở Server Action là gọi lên Server của Next -> chậm)
