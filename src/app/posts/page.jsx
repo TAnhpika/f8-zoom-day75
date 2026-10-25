@@ -1,5 +1,5 @@
-
 import AddForm from "./AddForm";
+import DeleteButton from "./DeleteButton";
 
 const getPosts = async () => {
     const response = await fetch(
@@ -7,8 +7,8 @@ const getPosts = async () => {
         {
             cache: "force-cache",
             next: {
-                tags: ["posts:list"]
-            }
+                tags: ["posts:list"],
+            },
         },
     );
     if (!response.ok) {
@@ -30,9 +30,7 @@ export default async function PostsPage() {
                         <button className="px-2 py-1 text-white bg-amber-600">
                             Edit
                         </button>
-                        <button className="px-2 py-1 text-white bg-red-600">
-                            Delete
-                        </button>
+                        <DeleteButton postId={post.id} />
                     </div>
                 </div>
             ))}

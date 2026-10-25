@@ -59,3 +59,6 @@ fetch cache: lưu dữ liệu vào bộ nhớ đệm -> check & lấy trong bộ
     - revalidateTag("posts:list", "max"):
         - max: revalidate ở dưới nền - 1,2 request sau mới xử lý xong thì dữ liệu mới đc làm mới ~ queue -> giảm tải cho Next Server (Được Next khuyến cáo nên dùng).
         - { expire: 0 } // clear cache ngay lập tức
+
+## DELETE
+- tách component DeleteButton

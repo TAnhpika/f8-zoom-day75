@@ -29,12 +29,36 @@ export const createPost = async (prevState, formData) => {
     }
 
     // revalidatePath("/posts");
-    // revalidateTag("posts:list", {
-    //     expire: 0 // clear ngay lập tức
-    // })
-    revalidateTag("posts:list", "max")
+    // revalidateTag("posts:list", "max");
 
+    revalidateTag("posts:list", {
+        expire: 0, // clear ngay lập tức
+    });
+    
     return {
         message: "Create post success",
+    };
+};
+
+export const deletePost = async (id) => {
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_API}/posts/${id}`,
+        {
+            method: "DELETE",
+        },
+    );
+
+    if (!response.ok) {
+        return {
+            message: "Server error",
+        };
+    }
+
+    revalidateTag("posts:list", {
+        expire: 0, // clear ngay lập tức
+    });
+
+    return {
+        message: "Delete post success",
     };
 };
