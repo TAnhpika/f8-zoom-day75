@@ -61,4 +61,12 @@ fetch cache: lưu dữ liệu vào bộ nhớ đệm -> check & lấy trong bộ
         - { expire: 0 } // clear cache ngay lập tức
 
 ## DELETE
+
 - tách component DeleteButton
+
+## UPDATE
+
+- Khi viết logic vào class -> dùng clsx
+- tạo modal -> gọi api hiện chi tiết -> edit -> viết server action để update
+- thêm input ẩn chứa id
+- dùng PATCH để k ghi đè các trường khác

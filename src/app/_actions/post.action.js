@@ -34,7 +34,7 @@ export const createPost = async (prevState, formData) => {
     revalidateTag("posts:list", {
         expire: 0, // clear ngay lập tức
     });
-    
+
     return {
         message: "Create post success",
     };
@@ -60,5 +60,37 @@ export const deletePost = async (id) => {
 
     return {
         message: "Delete post success",
+    };
+};
+
+export const updatePost = async (formData) => {
+    const title = formData.get("title");
+    const id = formData.get("id");
+
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_API}/posts/${id}`,
+        {
+            method: "PATCH",
+            body: JSON.stringify({ title }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        },
+    );
+
+    if (!response.ok) {
+        return {
+            success: false,
+            message: "Server error",
+        };
+    }
+
+    revalidateTag("posts:list", {
+        expire: 0, // clear ngay lập tức
+    });
+
+    return {
+        success: true,
+        message: "Update post success",
     };
 };

@@ -1,5 +1,6 @@
 import AddForm from "./AddForm";
 import DeleteButton from "./DeleteButton";
+import EditModal from "./EditModal";
 
 const getPosts = async () => {
     const response = await fetch(
@@ -27,9 +28,7 @@ export default async function PostsPage() {
                 <div key={post.id} className="mb-3 border-b border-[#ccc] pb-3">
                     <h2>{post.title}</h2>
                     <div className="flex mt-3 gap-3">
-                        <button className="px-2 py-1 text-white bg-amber-600">
-                            Edit
-                        </button>
+                        <EditModal postId={post.id} />
                         <DeleteButton postId={post.id} />
                     </div>
                 </div>
