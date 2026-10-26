@@ -24,6 +24,8 @@ const getPosts = async () => {
 };
 
 export default async function PostsPage() {
+    console.log("Posts page");
+
     const posts = await getPosts();
 
     return (

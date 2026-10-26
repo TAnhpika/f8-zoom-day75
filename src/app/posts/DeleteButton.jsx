@@ -1,8 +1,13 @@
 "use client";
 
+import { use } from "react";
 import { deletePost } from "../_actions/post.action";
+import { AppContext } from "../_components/AppProvider";
 
 export default function DeleteButton({ postId }) {
+    const { message } = use(AppContext);
+    console.log(message);
+
     return (
         <button
             onClick={() => deletePost(postId)}

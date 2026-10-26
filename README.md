@@ -103,3 +103,13 @@ Làm việc vs:
 
 - request header: page nào nằm sau proxy sẽ đọc đc
 - header ban đầu đc trình duyệt gửi lên next, mà next qua proxy của next r thêm 1 header mới -> những cái sau proxy mới đọc đc (layout, page)
+
+## Provider
+
+### Lý do dùng
+
+- Khi muốn share dữ liệu đến các client comp (~ thông tin user) -> tạo context / redux / zustand (k cần bọc Provider)
+  -> Dùng vd = Context
+- Context cần dùng ở client nhưng layout.jsx là server
+
+- Làm sao vừa dùng Context để share tới các client comp, vừa giữ đc các page là server (Server comp k bị thay đổi) -> Dùng Provider

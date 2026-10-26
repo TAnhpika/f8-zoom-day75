@@ -1,3 +1,4 @@
+import AppProvider from "./_components/AppProvider";
 import "./globals.css";
 
 export const metadata = {
@@ -6,10 +7,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+    console.log("root layout");
+
     return (
         <html lang="en">
             <body>
-                <main className="max-w-2/3 mx-auto px-3">{children}</main>
+                <main className="max-w-2/3 mx-auto px-3">
+                    <AppProvider>{children}</AppProvider>
+                </main>
             </body>
         </html>
     );
