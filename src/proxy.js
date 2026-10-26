@@ -9,18 +9,18 @@ export const proxy = (request) => {
     // console.log(host);
 
     // request header
-    const allHeaders = request.headers;
+    // const allHeaders = request.headers;
     // allHeaders.set("x-token", "abc123");
-    const name = request.cookies.get("name");
-    console.log(name);
+    // const name = request.cookies.get("name");
+    // console.log(name);
 
     // response header
     const response = NextResponse.next({
-        request: {
-            headers: allHeaders,
-        },
+        // request: {
+        //     headers: allHeaders,
+        // },
     });
-    response.headers.set("x-abc", "anhpika");
+    // response.headers.set("x-abc", "anhpika");
     response.cookies.set("token", "anhpika-token", {
         httpOnly: true,
     });

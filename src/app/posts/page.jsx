@@ -1,18 +1,22 @@
-import { headers } from "next/headers";
+import { cookies } from "next/headers";
+import { cacheTag } from "next/cache";
+import { Suspense } from "react";
 import AddForm from "./AddForm";
 import DeleteButton from "./DeleteButton";
 import EditModal from "./EditModal";
+import { getToken } from "../utils/utils";
+
+async function CookieDebug() {
+    await getToken();
+
+    return null;
+}
 
 const getPosts = async () => {
-    const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_API}/posts`,
-        {
-            cache: "force-cache",
-            next: {
-                tags: ["posts:list"],
-            },
-        },
-    );
+    "use cache";
+    cacheTag("posts:list");
+
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_API}/posts`);
     if (!response.ok) {
         throw new Error("Có lỗi khi lấy danh sách posts");
     }
@@ -21,11 +25,12 @@ const getPosts = async () => {
 
 export default async function PostsPage() {
     const posts = await getPosts();
-    const allHeaders = await headers();
-    console.log(allHeaders.get("x-token"));
 
     return (
         <div>
+            <Suspense fallback={null}>
+                <CookieDebug />
+            </Suspense>
             <h1 className="text-3xl mb-3">Posts</h1>
             {posts.map((post) => (
                 <div key={post.id} className="mb-3 border-b border-[#ccc] pb-3">
