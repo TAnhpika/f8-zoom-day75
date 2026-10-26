@@ -113,3 +113,22 @@ Làm việc vs:
 - Context cần dùng ở client nhưng layout.jsx là server
 
 - Làm sao vừa dùng Context để share tới các client comp, vừa giữ đc các page là server (Server comp k bị thay đổi) -> Dùng Provider
+
+## Static vs Dynamic rendering
+
+- Lưu ý:
+    - K lấy cookie, headers ở layout --> tự động chuyển toàn App thành Dynamic Rendering (giảm hiệu năng)
+    - Dùng searchParam cx vậy nhưng có giải pháp
+
+### Static
+
+- Khi build Next ưu tiên dạng Static rendering - sinh các html có sẵn -> khi có request -> đọc trực tiếp file html - rất nhanh --> cố gắng chuyển thành Static để tối ưu
+
+### Dynamic
+
+- Nếu vô tình biến thành Dynamic thì k có file html nào cả, khi có request thì mới tạo ra -> chậm hơn
+- Page nào gọi cookie, header / gọi API từ server -> dynamic
+
+### Dynamic -> Static
+
+- Cách chuyển 1 page từ dynamic thành static --> tách phần xử lý gây ra dynamic sang client (Posts)

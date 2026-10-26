@@ -1,16 +1,16 @@
-import { cookies } from "next/headers";
 import { cacheTag } from "next/cache";
-import { Suspense } from "react";
 import AddForm from "./AddForm";
 import DeleteButton from "./DeleteButton";
 import EditModal from "./EditModal";
-import { getToken } from "../utils/utils";
+// import { cookies } from "next/headers";
+// import { Suspense } from "react";
+// import { getToken } from "../utils/utils";
 
-async function CookieDebug() {
-    await getToken();
+// async function CookieDebug() {
+//     await getToken();
 
-    return null;
-}
+//     return null;
+// }
 
 const getPosts = async () => {
     "use cache";
@@ -30,9 +30,9 @@ export default async function PostsPage() {
 
     return (
         <div>
-            <Suspense fallback={null}>
+            {/* <Suspense fallback={null}>
                 <CookieDebug />
-            </Suspense>
+            </Suspense> */}
             <h1 className="text-3xl mb-3">Posts</h1>
             {posts.map((post) => (
                 <div key={post.id} className="mb-3 border-b border-[#ccc] pb-3">
