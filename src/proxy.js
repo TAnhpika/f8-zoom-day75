@@ -1,32 +1,22 @@
 import { NextResponse } from "next/server";
 import { refreshToken } from "./app/utils/utils";
 
+const isAuth = false;
+
 export const proxy = async (request) => {
-    // const pathname = request.nextUrl.pathname;
-    // console.log(`proxy: `, pathname);
-    // console.log(request);
-
-    // const host = request.headers.get("host");
-    // console.log(host);
-
-    // request header
-    // const allHeaders = request.headers;
-    // allHeaders.set("x-token", "abc123");
-    // const name = request.cookies.get("name");
-    // console.log(name);
-
-    // response header
+    // chuyển hướng
+    if (!isAuth) {
+        return NextResponse.redirect(new URL('/', request.nextUrl.origin))
+    }
+    // Check profile --> 401
+    const newToken = await refreshToken();
+    const allHeaders = request.headers;
+    allHeaders.set("x-token", newToken);
     const response = NextResponse.next({
-        // request: {
-        //     headers: allHeaders,
-        // },
+        request: {
+            headers: allHeaders,
+        },
     });
-    // response.headers.set("x-abc", "anhpika");
-    // response.cookies.set("token", "anhpika-token", {
-    //     httpOnly: true,
-    // });
-
-    await refreshToken()
     return response;
 };
 
