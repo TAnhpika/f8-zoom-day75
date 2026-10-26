@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import AddForm from "./AddForm";
 import DeleteButton from "./DeleteButton";
 import EditModal from "./EditModal";
+import { getToken } from "../utils/utils";
 
 const getPosts = async () => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_API}/posts`, {
@@ -19,6 +20,7 @@ const getPosts = async () => {
 
 async function PostsList() {
     const posts = await getPosts();
+    await getToken()
 
     return (
         <div>

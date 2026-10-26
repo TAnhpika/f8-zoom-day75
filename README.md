@@ -140,6 +140,8 @@ Làm việc vs:
 - khi fetch k cache, chỉ cần thêm dữ liệu vào khi build production & deploy thì nó vẫn dính cache
   --> khi thêm dữ liệu k hiện ở UI -> Dù k set cache vẫn phải revalidate - nhưng vẫn nên set
   ==> Fix = cache + revalidate tag.
+- lần đầu k get đc cookie (trong luồng request đó k có ngay mà cần đợi lần sau)
+- flow: gọi refresh ở proxy -> set cookie -> gọi getToken ở posts (response chưa kết thúc, headers chưa trả về -> trình duyệt chưa set)
 
 ### revalidate trực tiếp
 

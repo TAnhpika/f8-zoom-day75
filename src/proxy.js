@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
+import { refreshToken } from "./app/utils/utils";
 
-export const proxy = (request) => {
+export const proxy = async (request) => {
     // const pathname = request.nextUrl.pathname;
     // console.log(`proxy: `, pathname);
     // console.log(request);
@@ -21,9 +22,11 @@ export const proxy = (request) => {
         // },
     });
     // response.headers.set("x-abc", "anhpika");
-    response.cookies.set("token", "anhpika-token", {
-        httpOnly: true,
-    });
+    // response.cookies.set("token", "anhpika-token", {
+    //     httpOnly: true,
+    // });
+
+    await refreshToken()
     return response;
 };
 
