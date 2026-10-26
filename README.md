@@ -132,3 +132,20 @@ Làm việc vs:
 ### Dynamic -> Static
 
 - Cách chuyển 1 page từ dynamic thành static --> tách phần xử lý gây ra dynamic sang client (Posts)
+
+---
+
+### cache dev vs production
+
+- khi fetch k cache, chỉ cần thêm dữ liệu vào khi build production & deploy thì nó vẫn dính cache
+  --> khi thêm dữ liệu k hiện ở UI -> Dù k set cache vẫn phải revalidate - nhưng vẫn nên set
+  ==> Fix = cache + revalidate tag.
+
+### revalidate trực tiếp
+
+next: {
+tags: ["posts:list"],
+revalidate: 15
+}
+
+- hết 15s tự làm mới
