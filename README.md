@@ -87,3 +87,19 @@ fetch cache: lưu dữ liệu vào bộ nhớ đệm -> check & lấy trong bộ
 
 - luồng: proxy -> layout -> page
 - gọi 1 api ở proxy, 1 api ở page, 2 api đó trùng nhau thì gọi 2 lần? -> dùng react.cache xử lý (sang auth sẽ nói tiếp)
+
+## Proxy
+
+- proxy --> layout --> page
+- đổi tên: middleware -> proxy
+
+- config: bắt đầu bằng /posts /todos
+
+Làm việc vs:
+
+- cookie: set, get, delete,...
+- http header
+- url
+
+- request header: page nào nằm sau proxy sẽ đọc đc
+- header ban đầu đc trình duyệt gửi lên next, mà next qua proxy của next r thêm 1 header mới -> những cái sau proxy mới đọc đc (layout, page)

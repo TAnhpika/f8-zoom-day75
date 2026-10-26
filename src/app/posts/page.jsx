@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import AddForm from "./AddForm";
 import DeleteButton from "./DeleteButton";
 import EditModal from "./EditModal";
@@ -20,6 +21,8 @@ const getPosts = async () => {
 
 export default async function PostsPage() {
     const posts = await getPosts();
+    const allHeaders = await headers();
+    console.log(allHeaders.get("x-token"));
 
     return (
         <div>
