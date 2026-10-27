@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { refreshToken } from "./app/utils/utils";
 
-const isAuth = false;
+const isAuth = true;
 
 export const proxy = async (request) => {
     // chuyển hướng
     if (!isAuth) {
-        return NextResponse.redirect(new URL('/', request.nextUrl.origin))
+        return NextResponse.redirect(new URL("/", request.nextUrl.origin));
     }
     // Check profile --> 401
     const newToken = await refreshToken();

@@ -4,14 +4,22 @@ import DeleteButton from "./DeleteButton";
 import EditModal from "./EditModal";
 import { getToken } from "../utils/utils";
 
+export const metadata = {
+    title: "Danh sách bài viết",
+    description: "Danh sách bài viết của Anhpika",
+};
+
 const getPosts = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_API}/posts`, {
-        // cache: "no-store",
-        next: {
-            tags: ["posts:list"],
-            revalidate: 15
-        }
-    });
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_API}/posts`,
+        {
+            // cache: "no-store",
+            next: {
+                tags: ["posts:list"],
+                revalidate: 15,
+            },
+        },
+    );
     if (!response.ok) {
         throw new Error("Có lỗi khi lấy danh sách posts");
     }
@@ -20,7 +28,7 @@ const getPosts = async () => {
 
 async function PostsList() {
     const posts = await getPosts();
-    await getToken()
+    await getToken();
 
     return (
         <div>

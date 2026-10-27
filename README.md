@@ -153,3 +153,16 @@ revalidate: 15
 }
 
 - hết 15s tự làm mới
+
+## Dynamic metadata title
+
+- Thay đổi tiêu đề khi vào trang tương ứng
+
+- export const metadata = {
+  title: ""
+  }
+
+- render trên server -> bot đọc đc -> tăng SEO (react render title bằng DOM bot k đọc đc)
+
+- vđ: getProduct gọi 2 lần ->
+- cache(fn): đưa fn vào RAM, lần sau đọc sẽ lấy từ RAM
